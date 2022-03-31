@@ -1,0 +1,342 @@
+[
+    {
+        "id": "e6d02f61317115f1",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "669dd2288cb06edf",
+        "type": "function",
+        "z": "e6d02f61317115f1",
+        "name": "",
+        "func": "var m  = [{\"light\" : global.get(\"light\") , \"robotstart\" : global.get(\"robotstart\") , \" color\" : global.get(\"colorpicker\")}]\nmsg.payload = m\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 820,
+        "y": 880,
+        "wires": [
+            [
+                "312035600d291ba9",
+                "8d32a6ba53307cb4"
+            ]
+        ]
+    },
+    {
+        "id": "f4a90e810f5e743e",
+        "type": "function",
+        "z": "e6d02f61317115f1",
+        "name": "light1",
+        "func": "global.set(\"light\",msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 920,
+        "wires": [
+            [
+                "669dd2288cb06edf"
+            ]
+        ]
+    },
+    {
+        "id": "e6418333ecc802b1",
+        "type": "ui_switch",
+        "z": "e6d02f61317115f1",
+        "name": "",
+        "label": "Lights : ",
+        "tooltip": "",
+        "group": "a83c9e54bb6bd7f0",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "1",
+        "onvalueType": "num",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "0",
+        "offvalueType": "num",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 160,
+        "y": 940,
+        "wires": [
+            [
+                "f4a90e810f5e743e"
+            ]
+        ]
+    },
+    {
+        "id": "f04a1034930290ff",
+        "type": "pubnub in",
+        "z": "e6d02f61317115f1",
+        "keys": "3ee7fe7002386f28",
+        "channel": "karan1199",
+        "auth_token": "",
+        "cipher_key": "",
+        "ssl": true,
+        "verbose_logging": false,
+        "x": 140,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "312035600d291ba9",
+        "type": "pubnub out",
+        "z": "e6d02f61317115f1",
+        "keys": "3ee7fe7002386f28",
+        "channel": "karan1199",
+        "auth_token": "",
+        "cipher_key": "",
+        "ssl": true,
+        "verbose_logging": false,
+        "x": 990,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "56785f0ede4240bb",
+        "type": "ui_iro-color-picker",
+        "z": "e6d02f61317115f1",
+        "group": "a37ccce2477357e3",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "",
+        "placement": "left",
+        "hAlign": "flex-start",
+        "vAlign": "flex-start",
+        "stateField": "payload",
+        "enableField": "enable",
+        "layoutDirection": "horizontal",
+        "widgetIndent": "3",
+        "buttonWidth": "2",
+        "pickerType": "widget",
+        "popupWidth": 0,
+        "popupHeight": 0,
+        "pickerSize": "100",
+        "backgroundDim": "50",
+        "backgroundColor": "#000000",
+        "backgroundVariable": false,
+        "components": [
+            {
+                "options": {
+                    "borderColor": "#000000",
+                    "borderWidth": 0,
+                    "wheelLightness": true,
+                    "wheelAngle": 0,
+                    "wheelDirection": "anticlockwise"
+                },
+                "componentId": "picker"
+            }
+        ],
+        "format": "hex",
+        "outFormat": "rgb",
+        "dynOutput": "input:end",
+        "outputConfirmed": false,
+        "outputLimit": "10",
+        "passthru": false,
+        "topic": "topic",
+        "topicType": "msg",
+        "iroColorValue": "#0055ff",
+        "x": 200,
+        "y": 1080,
+        "wires": [
+            [
+                "7677e026d33d4ffa"
+            ]
+        ]
+    },
+    {
+        "id": "7677e026d33d4ffa",
+        "type": "function",
+        "z": "e6d02f61317115f1",
+        "name": "",
+        "func": "global.set(\"colorpicker\",msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 1080,
+        "wires": [
+            [
+                "669dd2288cb06edf"
+            ]
+        ]
+    },
+    {
+        "id": "f2ca4b926aa3ecc8",
+        "type": "ui_button",
+        "z": "e6d02f61317115f1",
+        "name": "",
+        "group": "a83c9e54bb6bd7f0",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": " Robot Start",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "str",
+        "x": 130,
+        "y": 820,
+        "wires": [
+            [
+                "065c6662d12038dc"
+            ]
+        ]
+    },
+    {
+        "id": "065c6662d12038dc",
+        "type": "function",
+        "z": "e6d02f61317115f1",
+        "name": "start",
+        "func": "global.set(\"robotstart\",1);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 820,
+        "wires": [
+            [
+                "669dd2288cb06edf"
+            ]
+        ]
+    },
+    {
+        "id": "8d32a6ba53307cb4",
+        "type": "delay",
+        "z": "e6d02f61317115f1",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "2",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 1000,
+        "y": 780,
+        "wires": [
+            [
+                "aca90367cbc57045"
+            ]
+        ]
+    },
+    {
+        "id": "aca90367cbc57045",
+        "type": "function",
+        "z": "e6d02f61317115f1",
+        "name": "start",
+        "func": "global.set(\"robotstart\",0);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1170,
+        "y": 780,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ae5c8eee5e75d845",
+        "type": "ui_spacer",
+        "z": "e6d02f61317115f1",
+        "name": "spacer",
+        "group": "",
+        "order": 2,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "ed9dadfe9ec71d42",
+        "type": "ui_spacer",
+        "z": "e6d02f61317115f1",
+        "name": "spacer",
+        "group": "",
+        "order": 2,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "260a6867602f5324",
+        "type": "ui_spacer",
+        "z": "e6d02f61317115f1",
+        "name": "spacer",
+        "group": "",
+        "order": 2,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "a83c9e54bb6bd7f0",
+        "type": "ui_group",
+        "name": "Robot Operation",
+        "tab": "bee982fc31a03168",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "3ee7fe7002386f28",
+        "type": "pubnub-keys",
+        "pub_key": "pub-c-3dd4d929-0243-4c13-a11f-d8076bbcfc0c",
+        "sub_key": "sub-c-278756ba-8923-11ec-9f2b-a2cedba671e8"
+    },
+    {
+        "id": "a37ccce2477357e3",
+        "type": "ui_group",
+        "name": "Color Picker",
+        "tab": "bee982fc31a03168",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "bee982fc31a03168",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
